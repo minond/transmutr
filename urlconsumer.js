@@ -47,11 +47,11 @@ Transmute.prototype.getPreferedServceUrl = function() {
     }
 };
 
-var url = new Transmute("https://www.open.spotify.com");
+var trans = new Transmute("https://www.open.spotify.com");
 
-url.setPreferedService();
-url.determineIncomingServiceUrl();
-url.getPreferedServceUrl();
+trans.setPreferedService();
+trans.determineIncomingServiceUrl();
+trans.getPreferedServceUrl();
 
-console.log(url);
+console.log(trans);
 
