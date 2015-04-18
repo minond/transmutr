@@ -7,7 +7,7 @@
  * });
  * 
  * @example find_track_info
- * sample.find_track_info('Broken Bells', 'The High Road', function (url) {
+ * sample.find_track_info({ artist: 'Broken Bells', title: 'The High Road', album: 'X' }, function (url) {
  *     console.log('url to play this song: %s', url);
  * });
  */
@@ -42,10 +42,9 @@ var sample = {
     /**
      * takes information about a song and returns a url to play that song in
      * service X
-     * @param {String} artist
-     * @param {String} track
+     * @param {Object} artist
      * @param {Function} callback
      */
-    find_track_info: function (artist, track, callback) {
+    find_track_info: function (track, callback) {
     }
 };

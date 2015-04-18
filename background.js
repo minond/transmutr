@@ -89,7 +89,7 @@ function incoming_request(req) {
         if (!assert(track, 'unable to find track results')) return;
         console.info(track);
 
-        prefered_service.find_track_info(track.artist, track.title, function (url) {
+        prefered_service.find_track_info(track, function (url) {
             if (!assert(url, 'unable to find track url')) return;
             console.info('url', url);
         });

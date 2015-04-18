@@ -23,10 +23,10 @@ var spotify = {
         req.send();
     },
 
-    find_track_info: function (artist, track, callback) {
+    find_track_info: function (track, callback) {
         var api_url = 'https://api.spotify.com/v1/search?q=';
-        api_url += encodeURIComponent(artist) + '+';
-        api_url += encodeURIComponent(track);
+        api_url += encodeURIComponent(track.artist) + '+';
+        api_url += encodeURIComponent(track.title);
 
         var api_end = '&type=artist,track',
 
