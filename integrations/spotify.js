@@ -40,6 +40,3 @@ var spotify = {
         req.send();
     }
 };
-
-// spotify_api.get_track_info('6rqhFgbbKwnb9MLmUQDhG6');
-// spotify_api.find_track_info('Broken Bells', 'The High Road');
