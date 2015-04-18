@@ -9,8 +9,21 @@ function integration(label, api) {
         integration.registered = {};
     }
 
+    integration.url_filters = integration.url_filters.concat(api.urls || []);
     integration.registered[ label ] = api;
 }
+
+/**
+ * known integrations
+ * @type {Object}
+ */
+integration.registered = {};
+
+/**
+ * list of urls to listen for
+ * @type {Array}
+ */
+integration.url_filters = ['http://nothing.com/'];
 
 /**
  * @param {String} url

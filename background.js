@@ -45,10 +45,7 @@ callbacks([
 ], function () {
     // https://developer.chrome.com/extensions/background_pages
     chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
-        urls: [
-            '*://*.spotify.com/track/*',
-            '*://play.google.com/music/*'
-        ]
+        urls: integration.url_filters
     }, []);
 
     // XXX
