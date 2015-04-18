@@ -10,9 +10,12 @@
     "default_popup": "index.html"
   },
 
+  "background": {
+    "scripts": ["background.js"]
+  },
+
   "permissions": [
-    "bookmarks",
-    "activeTab",
-    "https://ajax.googleapis.com/"
+    "webRequest",
+    "*://*.google.com/"
   ]
 }
