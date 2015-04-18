@@ -1,6 +1,5 @@
 'use strict';
 
-
 integration('spotify', {
     urls: ['*://*.spotify.com/track/*'],
     checker: /(play|open).spotify/,
