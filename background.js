@@ -19,6 +19,32 @@ function http_get(url, callback) {
 }
 
 /**
+ * execute a single callback after multiple funcitons that take callsbacks are
+ * done
+ * @param {Function[]} calls
+ * @param {Function}
+ */
+function callbacks(calls, callback) {
+    var len = calls.length,
+        results = [],
+        curr = 0;
+
+    function done(running) {
+        return function (res) {
+            results[ calls.indexOf(running) ] = res;
+
+            if (++curr === len) {
+                callback(results);
+            }
+        };
+    }
+
+    calls.forEach(function (fn) {
+        fn(done(fn));
+    });
+}
+
+/**
  * takes an integration string and returns an integration object
  * @see integrations/*.js
  * @param {String} service
@@ -69,10 +95,12 @@ function set_user_info(info) {
 /**
  * async loads a js file
  * @param {String} script url
+ * @param {Function} [callback]
  */
-function async_import_script(url) {
+function async_import_script(url, callback) {
     var script = document.createElement('script');
     script.src = chrome.extension.getURL(url);
+    script.addEventListener('load', callback || function () {}, false);
     document.head.appendChild(script);
 }
 
@@ -114,16 +142,19 @@ function incoming_request(req) {
     });
 }
 
-// https://developer.chrome.com/extensions/background_pages
-chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
-    urls: [
-        '*://*.spotify.com/track/*',
-        '*://play.google.com/music/*'
-    ]
-}, []);
+// import all integrations then set request listener
+callbacks([
+    async_import_script.bind(null, 'integrations/spotify.js'),
+    async_import_script.bind(null, 'integrations/google.js'),
+], function () {
+    // https://developer.chrome.com/extensions/background_pages
+    chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
+        urls: [
+            '*://*.spotify.com/track/*',
+            '*://play.google.com/music/*'
+        ]
+    }, []);
 
-async_import_script('integrations/spotify.js');
-async_import_script('integrations/google.js');
-
-// XXX
-set_user_info({ service: 'spotify' });
+    // XXX
+    set_user_info({ service: 'spotify' });
+});
