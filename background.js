@@ -21,6 +21,7 @@ function get_integration_for(service) {
     switch (service) {
         case SERVICE_SPOTIFY:
             return spotify_api;
+    }
 }
 
 /**
