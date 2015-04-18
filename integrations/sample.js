@@ -42,7 +42,7 @@ var sample = {
     /**
      * takes information about a song and returns a url to play that song in
      * service X
-     * @param {Object} artist
+     * @param {Object} track
      * @param {Function} callback
      */
     find_track_info: function (track, callback) {
