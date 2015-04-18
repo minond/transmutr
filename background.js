@@ -77,7 +77,6 @@ function assert(val, message) {
 /**
  * handles requests the browser is about to make that match the specified
  * filters.
- * @see SERVICE_URLS
  * @param {Object} req
  */
 function incoming_request(req) {
