@@ -2,21 +2,21 @@
 
 /**
  * @example get_track_info
- * sample.get_track_info('http://service/track/6rqhFgbbKwnb9MLmUQDhG6', function (track) {
+ * get_track_info('http://service/track/6rqhFgbbKwnb9MLmUQDhG6', function (track) {
  *     console.log('%s by %s on %s', track.name, track.artist, track.album);
  * });
  * 
  * @example find_track_info
- * sample.find_track_info({ artist: 'Broken Bells', title: 'The High Road', album: 'X' }, function (url) {
+ * find_track_info({ artist: 'Broken Bells', title: 'The High Road', album: 'X' }, function (url) {
  *     console.log('url to play this song: %s', url);
  * });
  */
-var sample = {
+integration('sample', {
     /**
-     * a label for this service. this is what is used to identify a service
-     * @type {String}
+     * array of urls to listen for
+     * @type {Array}
      */
-    label: 'spotify',
+    urls: ['*://*.spotify.com/track/*'],
 
     /**
      * pattern for detecting a track url from service X
@@ -47,4 +47,4 @@ var sample = {
      */
     find_track_info: function (track, callback) {
     }
-};
+});

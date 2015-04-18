@@ -1,6 +1,18 @@
 'use strict';
 
 /**
+ * @param {String} label
+ * @param {Object} api
+ */
+function integration(label, api) {
+    if (!integration.registered) {
+        integration.registered = {};
+    }
+
+    integration.registered[ label ] = api;
+}
+
+/**
  * @param {String} url
  * @param {Function} callback
  * @return {XMLHttpRequest}
@@ -18,6 +30,20 @@ function http_get(url, callback) {
     return xhr;
 }
 
+function for_in(obj, callback) {
+    var ret;
+
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            ret = callback(obj[key], key);
+
+            if (ret !== undefined) {
+                return ret;
+            }
+        }
+    }
+}
+
 /**
  * takes an integration string and returns an integration object
  * @see integrations/*.js
@@ -25,10 +51,11 @@ function http_get(url, callback) {
  * @return {Object}
  */
 function get_integration_for(service) {
-    switch (service) {
-        case spotify.label: return spotify;
-        case google.label: return google;
-    }
+    return for_in(integration.registered, function (api, label) {
+        if (label === service) {
+            return api;
+        }
+    });
 }
 
 /**
@@ -46,10 +73,11 @@ function get_integration_for(service) {
  * @return {Object}
  */
 function parse(url) {
-    switch (true) {
-        case spotify.checker.test(url): return { service: spotify.label };
-        case google.checker.test(url): return { service: google.label };
-    }
+    return for_in(integration.registered, function (api, label) {
+        if (api.checker.test(url)) {
+            return { service: label };
+        }
+    });
 }
 
 /**

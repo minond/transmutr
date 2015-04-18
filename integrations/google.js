@@ -1,7 +1,7 @@
 'use strict';
 
-var google = {
-    label: 'google',
+integration('google', {
+    urls: ['*://play.google.com/music/*'],
     checker: /play.google/,
     id: /preview\/([\w\d]+)/,
 
@@ -19,4 +19,4 @@ var google = {
             callback(null);
         });
     }
-};
+});

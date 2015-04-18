@@ -1,7 +1,8 @@
 'use strict';
 
-var spotify = {
-    label: 'spotify',
+
+integration('spotify', {
+    urls: ['*://*.spotify.com/track/*'],
     checker: /(play|open).spotify/,
     id: /track\/([\w\d]+)/,
 
@@ -35,4 +36,4 @@ var spotify = {
             callback(result.tracks.items[0].external_urls.spotify);
         });
     }
-};
+});
