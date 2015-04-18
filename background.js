@@ -91,18 +91,19 @@ function incoming_request(req) {
     var info = parse(req.url),
         user = get_user_info();
 
+    var requested_service = get_integration_for(info.service),
+        prefered_service = get_integration_for(user.service);
+
     console.log('info', info)
     console.log('user', user)
 
+    console.log('requested_service', requested_service);
+    console.log('prefered_service', prefered_service);
 
-    // // info.service will be spotify, google, etc.
-    // var incoming_service = get_integration_for(info.service);
-    // var outgoing_service = get_integration_for(user.service);
-    //
     // // info.id will be the track id we got from the url
-    // var track = incoming_service.get_track_info(info.id)
+    // var track = requested_service.get_track_info(info.id)
     //
-    // console.log(outgoing_service.find_track_url(track));
+    // console.log(prefered_service.find_track_url(track));
     // console.log(spotify_api);
 }
 
