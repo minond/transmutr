@@ -13,6 +13,17 @@ var SERVICE_GOOGLE = 'google',
     SERVICE_SPOTIFY = 'spotify';
 
 /**
+ * takes an integration string and returns an integration object
+ * @param {String} service
+ * @return {Object}
+ */
+function get_integration_for(service) {
+    switch (service) {
+        case SERVICE_SPOTIFY:
+            return spotify_api;
+}
+
+/**
  * takes a url and returns the service it's from and the id of the track
  *
  * example input:
@@ -71,9 +82,6 @@ function async_import_script(url) {
     var script = document.createElement('script');
     script.src = chrome.extension.getURL(url);
     document.head.appendChild(script);
-}
-
-function get_integration_for(service) {
 }
 
 /**
