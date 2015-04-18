@@ -5,8 +5,8 @@
  * get_track_info('http://service/track/6rqhFgbbKwnb9MLmUQDhG6', function (track) {
  *     console.log('%s by %s on %s', track.name, track.artist, track.album);
  * });
- * 
- * @example find_track_info
+ *
+ * @example get_track_url
  * find_track_info({ artist: 'Broken Bells', title: 'The High Road', album: 'X' }, function (url) {
  *     console.log('url to play this song: %s', url);
  * });

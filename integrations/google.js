@@ -16,7 +16,16 @@ integration('google', {
 
         http_get(search_url + parts[1], function (res) {
             console.log('response from google:', res.responseText);
-            callback(null);
+            var wrapper = document.createElement('div');
+            wrapper.innerHTML = res.responseText;
+
+            var title_info = wrapper.querySelector('meta[property="og:title"]')
+                .getAttribute('content').split(' - ');
+
+            callback({
+                title: title_info[0],
+                artist: title_info[1]
+            });
         });
     }
 });
