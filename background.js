@@ -125,6 +125,7 @@ function incoming_request(req) {
 // https://developer.chrome.com/extensions/background_pages
 chrome.webRequest.onBeforeRequest.addListener(incoming_request, { urls: SERVICE_URLS }, []);
 async_import_script('integrations/spotify.js');
+async_import_script('integrations/google.js');
 
 // XXX
 set_user_info({ service: SERVICE_SPOTIFY });
