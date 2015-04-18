@@ -21,28 +21,16 @@ function get_integration_for(service) {
  * https://play.google.com/music/preview/Th73lqpq5emphzzyg4mqgt4fwnu
  *
  * example output:
- * { service: 'spotify', id: '1m85PpnCEa9EaU2z6lGwmO' }
- * { service: 'google', id: 'Th73lqpq5emphzzyg4mqgt4fwnu' }
+ * { service: 'spotify' }
+ * { service: 'google' }
  *
  * @param {String} url
  * @return {Object}
  */
 function parse(url) {
-    function id(parser) {
-        var parts = url.match(parser);
-        return parts && parts.pop();
-    }
-
-    function packet(service, parser) {
-        return {
-            service: service,
-            id: id(parser)
-        };
-    }
-
     switch (true) {
-        case spotify.checker.test(url): return packet(spotify.label, spotify.id);
-        case google.checker.test(url): return packet(google.label, google.id);
+        case spotify.checker.test(url): return { service: spotify.label };
+        case google.checker.test(url): return { service: google.label };
     }
 }
 
@@ -97,7 +85,7 @@ function incoming_request(req) {
     console.info('requested_service', requested_service);
     console.info('prefered_service', prefered_service);
 
-    requested_service.get_track_info(info.id, function (track) {
+    requested_service.get_track_info(req.url, function (track) {
         if (!assert(track, 'unable to find track results')) return;
         console.info(track);
 

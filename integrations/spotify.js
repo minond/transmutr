@@ -5,10 +5,11 @@ var spotify = {
     checker: /(play|open).spotify/,
     id: /track\/([\w\d]+)/,
 
-    get_track_info: function (id, callback) {
+    get_track_info: function (url, callback) {
+        var id = url.match(this.id)[1];
         var req = new XMLHttpRequest();
-        var url = 'https://api.spotify.com/v1/tracks/' + id;
 
+        url = 'https://api.spotify.com/v1/tracks/' + id;
         req.onload = function (resp) {
             var result = JSON.parse(req.responseText);
             callback({

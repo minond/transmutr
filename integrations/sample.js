@@ -2,7 +2,7 @@
 
 /**
  * @example get_track_info
- * sample.get_track_info('6rqhFgbbKwnb9MLmUQDhG6', function (track) {
+ * sample.get_track_info('http://service/track/6rqhFgbbKwnb9MLmUQDhG6', function (track) {
  *     console.log('%s by %s on %s', track.name, track.artist, track.album);
  * });
  * 
@@ -31,12 +31,12 @@ var sample = {
     id: /track\/([\w\d]+)/,
 
     /**
-     * takes a track id from service X and returns an object with information
+     * takes a track url from service X and returns an object with information
      * like: the name of the song; artist; and album.
-     * @param {String} id
+     * @param {String} url
      * @param {Function} callback
      */
-    get_track_info: function (id, callback) {
+    get_track_info: function (url, callback) {
     },
 
     /**
