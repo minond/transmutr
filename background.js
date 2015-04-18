@@ -1,3 +1,5 @@
+'use strict';
+
 var SERVICE_URLS = [
     '*://*.spotify.com/track/*',
     '*://play.google.com/music/*'
@@ -100,11 +102,13 @@ function incoming_request(req) {
     console.log('requested_service', requested_service);
     console.log('prefered_service', prefered_service);
 
-    // // info.id will be the track id we got from the url
-    // var track = requested_service.get_track_info(info.id)
-    //
-    // console.log(prefered_service.find_track_url(track));
-    // console.log(spotify_api);
+    requested_service.get_track_info(info.id, function (track) {
+        console.log(track);
+
+        prefered_service.find_track_info(track.artist, track.title, function (url) {
+            console.log('url', url);
+        });
+    });
 }
 
 // https://developer.chrome.com/extensions/background_pages

@@ -1,25 +1,24 @@
+'use strict';
+
 var spotify_api = {
-
-    complete_url:  null,
-
-    get_complete_url: function() {
-        return complete_url;
-    },
-
-    get_track_info: function (id) {
+    get_track_info: function (id, callback) {
         var req = new XMLHttpRequest();
         var url = 'https://api.spotify.com/v1/tracks/' + id;
 
         req.onload = function (resp) {
             var result = JSON.parse(req.responseText);
-            complete_url = result.external_urls.spotify;
+            callback({
+                title: result.name,
+                artist: result.artists[0].name,
+                album: result.album.name
+            });
         };
 
         req.open('GET', url, true);
         req.send();
     },
 
-    find_track_info: function (artist, track) {
+    find_track_info: function (artist, track, callback) {
         var api_url = 'https://api.spotify.com/v1/search?q=';
         api_url += encodeURIComponent(artist) + '+';
         api_url += encodeURIComponent(track);
@@ -30,7 +29,7 @@ var spotify_api = {
 
         req.onload = function (resp) {
             var result = JSON.parse(req.responseText);
-            complete_url = result.tracks.items[0].external_urls.spotify;
+            callback(result.tracks.items[0].external_urls.spotify);
         };
 
         req.open('GET', api_url + api_end, true);
