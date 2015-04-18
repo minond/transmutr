@@ -13,6 +13,7 @@
     "webRequest",
     "*://www.rdio.com/",
     "*://*.spotify.com/",
-    "*://play.google.com/"
+    "*://play.google.com/",
+    "*://*.last.fm/"
   ]
 }

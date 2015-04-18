@@ -191,6 +191,7 @@ callbacks([
     async_import_script.bind(null, 'integrations/rdio.js'),
     async_import_script.bind(null, 'integrations/spotify.js'),
     async_import_script.bind(null, 'integrations/google.js'),
+    async_import_script.bind(null, 'integrations/lastfm.js'),
 ], function () {
     // https://developer.chrome.com/extensions/background_pages
     chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
@@ -198,5 +199,5 @@ callbacks([
     }, []);
 
     // XXX
-    set_user_info({ service: 'spotify' });
+    set_user_info({ service: 'lastfm' });
 });
