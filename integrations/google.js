@@ -1,4 +1,9 @@
-var google_api = {
+'use strict';
+
+var google = {
+    label: 'google',
+    checker: /play.google/,
+    id: /preview\/([\w\d]+)/,
 
     get_track_info: function (id) {
         var req = new XMLHttpRequest();
@@ -14,4 +19,4 @@ var google_api = {
         req.open('GET', url, true);
         req.send();
     }
-}
+};

@@ -5,15 +5,6 @@ var SERVICE_URLS = [
     '*://play.google.com/music/*'
 ]
 
-var CHECK_GOOGLE = /play.google/,
-    CHECK_SPOTIFY = /(play|open).spotify/;
-
-var ID_GOOGLE = /preview\/([\w\d]+)/,
-    ID_SPOTIFY = /track\/([\w\d]+)/;
-
-var SERVICE_GOOGLE = 'google',
-    SERVICE_SPOTIFY = 'spotify';
-
 /**
  * takes an integration string and returns an integration object
  * @see integrations/*.js
@@ -22,7 +13,8 @@ var SERVICE_GOOGLE = 'google',
  */
 function get_integration_for(service) {
     switch (service) {
-        case SERVICE_SPOTIFY: return spotify_api;
+        case spotify.label: return spotify;
+        case google.label: return google;
     }
 }
 
@@ -54,8 +46,8 @@ function parse(url) {
     }
 
     switch (true) {
-        case CHECK_SPOTIFY.test(url): return packet(SERVICE_SPOTIFY, ID_SPOTIFY);
-        case CHECK_GOOGLE.test(url): return packet(SERVICE_GOOGLE, ID_GOOGLE);
+        case spotify.checker.test(url): return packet(spotify.label, spotify.id);
+        case google.checker.test(url): return packet(google.label, google.id);
     }
 }
 
@@ -128,4 +120,4 @@ async_import_script('integrations/spotify.js');
 async_import_script('integrations/google.js');
 
 // XXX
-set_user_info({ service: SERVICE_SPOTIFY });
+set_user_info({ service: 'spotify' });

@@ -1,6 +1,10 @@
 'use strict';
 
-var spotify_api = {
+var spotify = {
+    label: 'spotify',
+    checker: /(play|open).spotify/,
+    id: /track\/([\w\d]+)/,
+
     get_track_info: function (id, callback) {
         var req = new XMLHttpRequest();
         var url = 'https://api.spotify.com/v1/tracks/' + id;
@@ -35,7 +39,7 @@ var spotify_api = {
         req.open('GET', api_url + api_end, true);
         req.send();
     }
-}
+};
 
 // spotify_api.get_track_info('6rqhFgbbKwnb9MLmUQDhG6');
 // spotify_api.find_track_info('Broken Bells', 'The High Road');
