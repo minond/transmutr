@@ -83,6 +83,10 @@ function async_import_script(url) {
     document.head.appendChild(script);
 }
 
+function assert(val, message) {
+    return !!val || console.warn('WARNING: %s', message);
+}
+
 /**
  * handles requests the browser is about to make that match the specified
  * filters.
@@ -93,20 +97,27 @@ function incoming_request(req) {
     var info = parse(req.url),
         user = get_user_info();
 
+    if (!assert(info, 'parsed information from url')) return;
+    if (!assert(user, 'retrieved user information')) return;
+
     var requested_service = get_integration_for(info.service),
         prefered_service = get_integration_for(user.service);
 
-    console.log('info', info)
-    console.log('user', user)
+    if (!assert(requested_service, 'not able to find requested_service')) return;
+    if (!assert(prefered_service, 'not able to find prefered_service')) return;
 
-    console.log('requested_service', requested_service);
-    console.log('prefered_service', prefered_service);
+    console.info('info', info)
+    console.info('user', user)
+    console.info('requested_service', requested_service);
+    console.info('prefered_service', prefered_service);
 
     requested_service.get_track_info(info.id, function (track) {
-        console.log(track);
+        if (!assert(track, 'unable to find track results')) return;
+        console.info(track);
 
         prefered_service.find_track_info(track.artist, track.title, function (url) {
-            console.log('url', url);
+            if (!assert(url, 'unable to find track url')) return;
+            console.info('url', url);
         });
     });
 }
