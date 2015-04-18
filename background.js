@@ -6,7 +6,7 @@ var SERVICE_URLS = [
 ]
 
 var CHECK_GOOGLE = /play.google/,
-    CHECK_SPOTIFY = /play.spotify/;
+    CHECK_SPOTIFY = /(play|open).spotify/;
 
 var ID_GOOGLE = /preview\/([\w\d]+)/,
     ID_SPOTIFY = /track\/([\w\d]+)/;
