@@ -1,10 +1,5 @@
 'use strict';
 
-var SERVICE_URLS = [
-    '*://*.spotify.com/track/*',
-    '*://play.google.com/music/*'
-]
-
 /**
  * takes an integration string and returns an integration object
  * @see integrations/*.js
@@ -115,7 +110,13 @@ function incoming_request(req) {
 }
 
 // https://developer.chrome.com/extensions/background_pages
-chrome.webRequest.onBeforeRequest.addListener(incoming_request, { urls: SERVICE_URLS }, []);
+chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
+    urls: [
+        '*://*.spotify.com/track/*',
+        '*://play.google.com/music/*'
+    ]
+}, []);
+
 async_import_script('integrations/spotify.js');
 async_import_script('integrations/google.js');
 
