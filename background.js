@@ -1,3 +1,8 @@
+var SERVICE_URLS = [
+    '*://*.spotify.com/track/*',
+    '*://play.google.com/music/*'
+]
+
 var CHECK_GOOGLE = /play.google/,
     CHECK_SPOTIFY = /play.spotify/;
 
@@ -44,6 +49,25 @@ function parse(url) {
     }
 }
 
+/**
+ * @return {Object}
+ */
+function get_user_info() {
+    return JSON.parse(localStorage.getItem('user'));
+}
+
+/**
+ * @param {Object} user info object. right now just a `service` is required
+ */
+function set_user_info(info) {
+    localStorage.setItem('user', JSON.stringify(info));
+}
+
+/**
+ * handles requests the browser is about to make that match the specified
+ * filters. see SERVICE_URLS
+ * @param {Object} req
+ */
 function incoming_request(req) {
     console.log('%s => %s', req.method, req.url);
     console.log(parse(req.url));
@@ -62,9 +86,7 @@ function incoming_request(req) {
 }
 
 // https://developer.chrome.com/extensions/background_pages
-chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
-    urls: [
-        '*://*.spotify.com/track/*',
-        '*://play.google.com/music/*'
-    ]
-}, []);
+chrome.webRequest.onBeforeRequest.addListener(incoming_request, { urls: SERVICE_URLS }, []);
+
+// XXX
+set_user_info({ service: SERVICE_SPOTIFY });
