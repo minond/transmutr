@@ -7,7 +7,7 @@
  * });
  *
  * @example get_track_url
- * find_track_info({ artist: 'Broken Bells', title: 'The High Road', album: 'X' }, function (url) {
+ * get_track_url({ artist: 'Broken Bells', title: 'The High Road', album: 'X' }, function (url) {
  *     console.log('url to play this song: %s', url);
  * });
  */
@@ -45,6 +45,6 @@ integration('sample', {
      * @param {Object} track
      * @param {Function} callback
      */
-    find_track_info: function (track, callback) {
+    get_track_url: function (track, callback) {
     }
 });
