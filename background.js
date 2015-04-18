@@ -1,6 +1,24 @@
 'use strict';
 
 /**
+ * @param {String} url
+ * @param {Function} callback
+ * @return {XMLHttpRequest}
+ */
+function http_get(url, callback) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onload = function () {
+        callback(xhr);
+    };
+
+    xhr.open('GET', url, true);
+    xhr.send();
+
+    return xhr;
+}
+
+/**
  * takes an integration string and returns an integration object
  * @see integrations/*.js
  * @param {String} service

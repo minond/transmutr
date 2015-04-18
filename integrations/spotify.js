@@ -6,38 +6,33 @@ var spotify = {
     id: /track\/([\w\d]+)/,
 
     get_track_info: function (url, callback) {
-        var id = url.match(this.id)[1];
-        var req = new XMLHttpRequest();
+        var search_url = 'https://api.spotify.com/v1/tracks/',
+            parts = url.match(this.id);
 
-        url = 'https://api.spotify.com/v1/tracks/' + id;
-        req.onload = function (resp) {
-            var result = JSON.parse(req.responseText);
+        if (!parts) {
+            callback(null);
+            return;
+        }
+
+        http_get(search_url + parts[1], function (res) {
+            var result = JSON.parse(res.responseText);
+
             callback({
                 title: result.name,
                 artist: result.artists[0].name,
                 album: result.album.name
             });
-        };
-
-        req.open('GET', url, true);
-        req.send();
+        });
     },
 
     find_track_info: function (track, callback) {
-        var api_url = 'https://api.spotify.com/v1/search?q=';
-        api_url += encodeURIComponent(track.artist) + '+';
-        api_url += encodeURIComponent(track.title);
+        var search_url = 'https://api.spotify.com/v1/search?type=artist,track&q=' +
+            encodeURIComponent(track.artist) + '+' +
+            encodeURIComponent(track.title);
 
-        var api_end = '&type=artist,track',
-
-        req = new XMLHttpRequest();
-
-        req.onload = function (resp) {
-            var result = JSON.parse(req.responseText);
+        http_get(search_url, function (res) {
+            var result = JSON.parse(res.responseText);
             callback(result.tracks.items[0].external_urls.spotify);
-        };
-
-        req.open('GET', api_url + api_end, true);
-        req.send();
+        });
     }
 };
