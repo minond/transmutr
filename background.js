@@ -2,5 +2,8 @@
 chrome.webRequest.onBeforeRequest.addListener(function (req) {
     console.log('%s => %s', req.method, req.url);
 }, {
-    urls: ["*://*.google.com/*"]
+    urls: [
+        "*://*.spotify.com/track/*",
+        "*://play.google.com/music/*"
+    ]
 }, []);

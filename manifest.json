@@ -11,6 +11,7 @@
 
   "permissions": [
     "webRequest",
-    "*://*.google.com/"
+    "*://*.spotify.com/",
+    "*://play.google.com/"
   ]
 }
