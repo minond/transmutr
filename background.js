@@ -14,13 +14,13 @@ var SERVICE_GOOGLE = 'google',
 
 /**
  * takes an integration string and returns an integration object
+ * @see integrations/*.js
  * @param {String} service
  * @return {Object}
  */
 function get_integration_for(service) {
     switch (service) {
-        case SERVICE_SPOTIFY:
-            return spotify_api;
+        case SERVICE_SPOTIFY: return spotify_api;
     }
 }
 
@@ -44,20 +44,16 @@ function parse(url) {
         return parts && parts.pop();
     }
 
-    switch (true) {
-        case CHECK_SPOTIFY.test(url):
-            return {
-                service: SERVICE_SPOTIFY,
-                id: id(ID_SPOTIFY)
-            };
-            break;
+    function packet(service, parser) {
+        return {
+            service: service,
+            id: id(parser)
+        };
+    }
 
-        case CHECK_GOOGLE.test(url):
-            return {
-                service: SERVICE_GOOGLE,
-                id: id(ID_GOOGLE)
-            };
-            break;
+    switch (true) {
+        case CHECK_SPOTIFY.test(url): return packet(SERVICE_SPOTIFY, ID_SPOTIFY);
+        case CHECK_GOOGLE.test(url): return packet(SERVICE_GOOGLE, ID_GOOGLE);
     }
 }
 
@@ -87,7 +83,8 @@ function async_import_script(url) {
 
 /**
  * handles requests the browser is about to make that match the specified
- * filters. see SERVICE_URLS
+ * filters.
+ * @see SERVICE_URLS
  * @param {Object} req
  */
 function incoming_request(req) {
