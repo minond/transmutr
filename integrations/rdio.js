@@ -8,10 +8,14 @@ integration('rdio', {
     get_track_info: function (url, callback) {
         var parts = url.match(this.id);
 
+        function clean(str) {
+            return str.replace(/_/g, ' ');
+        }
+
         callback(!parts ? null : {
-            title: parts[3],
-            artist: parts[1],
-            album: parts[2]
+            title: clean(parts[3]),
+            artist: clean(parts[1]),
+            album: clean(parts[2])
         });
     },
 
