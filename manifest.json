@@ -11,6 +11,7 @@
 
   "permissions": [
     "webRequest",
+    "*://www.rdio.com/",
     "*://*.spotify.com/",
     "*://play.google.com/"
   ]
