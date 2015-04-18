@@ -188,7 +188,6 @@ function async_import_script(url, callback) {
 }
 
 callbacks([
-    async_import_script.bind(null, 'lib.js'),
     async_import_script.bind(null, 'integrations/spotify.js'),
     async_import_script.bind(null, 'integrations/google.js'),
 ], function () {
