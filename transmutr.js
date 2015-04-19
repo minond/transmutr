@@ -1,11 +1,6 @@
 'use strict';
 
 /**
- * Enabled App
- */
- var enabled = true;
-
-/**
  * @param {String} label
  * @param {Object} api
  */
@@ -148,6 +143,16 @@ function set_user_info(info) {
 }
 
 /**
+ * @param {Boolean} [val]
+ * @return {Boolean}
+ */
+function is_enabled(val) {
+    return val === undefined ?
+        localStorage.getItem('enabled') !== 'false' :
+        localStorage.setItem('enabled', val);
+}
+
+/**
  * outputs a warning message and returns false when val is falsy
  * @param {mixed} val
  * @param {String} message
@@ -259,16 +264,17 @@ callbacks([
         urls: integration.url_filters
     }, []);
 
-
     chrome.browserAction.onClicked.addListener(function(tab) {
-        if (enabled) {
-            enabled = false;
-            chrome.browserAction.setIcon(
-                {path: "/img/38-disabled.png"});
+        if (is_enabled()) {
+            is_enabled(false);
+            chrome.browserAction.setIcon({
+                path: '/img/38-disabled.png'
+            });
         } else {
-            enabled = true;
-            chrome.browserAction.setIcon(
-                {path: "/img/38.png"});
+            is_enabled(true);
+            chrome.browserAction.setIcon({
+                path: '/img/38.png'
+            });
         }
     });
 });
