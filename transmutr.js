@@ -257,14 +257,12 @@ function async_import_script(url, callback) {
  */
 function set_extension_icon() {
     if (is_enabled()) {
-        // is_enabled(false)
-        chrome.browserAction.setIcon({
-            path: '/img/38-disabled.png'
-        });
-    } else {
-        // is_enabled(true);
         chrome.browserAction.setIcon({
             path: '/img/38.png'
+        });
+    } else {
+        chrome.browserAction.setIcon({
+            path: '/img/38-disabled.png'
         });
     }
 }
