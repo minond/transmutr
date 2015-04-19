@@ -127,6 +127,13 @@ function parse(url) {
 }
 
 /**
+ * @return {Boolean}
+ */
+function has_user_info() {
+    return !!localStorage.getItem('user');
+}
+
+/**
  * @return {Object}
  */
 function get_user_info() {
@@ -268,6 +275,14 @@ function set_extension_icon() {
 
 // init
 set_extension_icon();
+
+if (!has_user_info()) {
+    chrome.tabs.create({
+        url: 'chrome://extensions/?options=' + chrome.runtime.id
+    });
+
+    set_user_info({ opened: true });
+}
 
 callbacks([
     async_import_script.bind(null, 'integrations/rdio.js'),
