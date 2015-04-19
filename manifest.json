@@ -5,6 +5,8 @@
   "description": "Share music your way. Hear music your way.",
   "version": "1.0",
 
+  "options_page": "view/options.html",
+
   "background": {
     "scripts": ["transmutr.js"]
   },

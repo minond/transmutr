@@ -251,9 +251,4 @@ callbacks([
         urls: integration.url_filters
     }, []);
 
-    // XXX
-    set_user_info({
-        service: 'spotify',
-        open_in: 'new'
-    });
 });
