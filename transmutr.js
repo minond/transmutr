@@ -261,26 +261,14 @@ callbacks([
 
 
     chrome.browserAction.onClicked.addListener(function(tab) {
-
-        var id = chrome.runtime.id;
         if (enabled) {
             enabled = false;
-            chrome.browseraction.seticon(
-                path: {
-                    19: "/img/128.png",
-                    38: "img/extension-icon.png"
-                  },
-                  tabId: tab.id
-                });
+            chrome.browserAction.setIcon(
+                {path: "/img/128-disabled.png"});
         } else {
             enabled = true;
-            chrome.browseraction.seticon(
-                path: {
-                    19: "/img/128.png",
-                    38: "img/extension-icon.png"
-                  },
-                  tabId: tab.id
-                });
+            chrome.browserAction.setIcon(
+                {path: "/img/extension-icon.png"});
         }
     });
 });
