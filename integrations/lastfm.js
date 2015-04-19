@@ -36,8 +36,11 @@ integration('lastfm', {
             search_url += '&format=json';
 
         http_get(search_url, function (res) {
-            var result = JSON.parse(res.responseText);
-            callback(result.results.trackmatches.track[0].url);
+            var result = JSON.parse(res.responseText),
+                tracks = result.results.trackmatches.track,
+                track = tracks instanceof Array ? tracks[0] : tracks;
+
+            callback(track.url);
         });
     }
 });
