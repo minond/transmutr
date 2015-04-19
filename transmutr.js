@@ -58,6 +58,38 @@ function for_in(obj, callback) {
 }
 
 /**
+ * takes a url string and returns an object containing each of the url parts
+ * @param {String} url
+ * @return {Object}
+ */
+function parse_url(url) {
+    var parser = document.createElement('a'),
+        searchObject = {},
+        queries, split, i;
+
+    // Let the browser do the work
+    parser.href = url;
+
+    // Convert query string to object
+    queries = parser.search.replace(/^\?/, '').split('&');
+    for( i = 0; i < queries.length; i++ ) {
+        split = queries[i].split('=');
+        searchObject[split[0]] = split[1];
+    }
+
+    return {
+        protocol: parser.protocol,
+        host: parser.host,
+        hostname: parser.hostname,
+        port: parser.port,
+        pathname: parser.pathname,
+        search: parser.search,
+        searchObject: searchObject,
+        hash: parser.hash
+    };
+}
+
+/**
  * takes an integration string and returns an integration object
  * @see integrations/*.js
  * @param {String} service
