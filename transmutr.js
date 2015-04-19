@@ -59,10 +59,11 @@ function for_in(obj, callback) {
 
 /**
  * takes a url string and returns an object containing each of the url parts
+ * http://www.abeautifulsite.net/parsing-urls-in-javascript/
  * @param {String} url
  * @return {Object}
  */
-function parse_url(url) {
+function explode_url(url) {
     var parser = document.createElement('a'),
         searchObject = {},
         queries, split, i;

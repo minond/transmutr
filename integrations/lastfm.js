@@ -7,7 +7,7 @@ integration('lastfm', {
     api_key: '056227de573c896b4c2a331b713b1df3',
 
     get_track_info: function (url, callback) {
-        var parts = parse_url(url);
+        var parts = explode_url(url);
         var band_info = parts.pathname.split("/");
 
         if (!band_info) {

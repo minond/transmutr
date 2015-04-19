@@ -9,7 +9,7 @@ integration('beats', {
 
     //https://partner.api.beatsmusic.com/v1/api/tracks/tr8992441?client_id=dj8nf6xp82aep7kstkkg3mr5
     get_track_info: function (url, callback) {
-        var parts = parse_url(url);
+        var parts = explode_url(url);
         var band_info = parts.pathname.split("/");
 
         if (!band_info) {
