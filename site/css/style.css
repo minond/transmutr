@@ -5242,3 +5242,9 @@ body {
 body header .logo {
   height: 60px;
 }
+body footer.footer {
+  background: #eaeaea;
+}
+body section.supported img {
+  max-width: 100%;
+}
