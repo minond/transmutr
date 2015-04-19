@@ -23,9 +23,9 @@ integration('rdio', {
         // http://www.rdio.com/artist/Lord_Huron/album/Strange_Trails/track/Until_the_Night_Turns/
         var url = 'http://www.rdio.com/artist/' +
             encodeURIComponent(track.artist) +
-            /album/ +
+            '/album/' +
             encodeURIComponent(track.album) +
-            /track/ +
+            '/track/' +
             encodeURIComponent(track.title);
 
         callback(url);
