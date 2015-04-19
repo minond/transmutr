@@ -8,21 +8,16 @@ integration('itunes', {
 
     get_track_info: function (url, callback) {
         var id = url.match(this.id)[3];
-        var req = new XMLHttpRequest();
+        var track_url = 'https://itunes.apple.com/lookup?id=' + id;
 
-        url = 'https://itunes.apple.com/lookup?id=' + id;
-
-        req.onload = function (res) {
-            var result = JSON.parse(req.responseText).results[0];
+        http_get(track_url, function (res) {
+            var result = JSON.parse(res.responseText).results[0];
             callback({
                 title: result.trackName,
                 artist: result.artistName,
                 album: result.collectionName
-            })
-        }
-
-        req.open('GET', url, true);
-        req.send();
+            });
+        });
     },
 
     get_track_url: function (track, callback) {
@@ -33,6 +28,6 @@ integration('itunes', {
         http_get(search_url, function (res) {
             var result = JSON.parse(res.responseText);
             callback(result.results[0].trackViewUrl);
-        })
+        });
     }
 });
