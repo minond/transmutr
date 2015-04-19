@@ -67,10 +67,6 @@ strong {
 dfn {
   font-style: italic;
 }
-h1 {
-  margin: .67em 0;
-  font-size: 2em;
-}
 mark {
   color: #000;
   background: #ff0;
@@ -450,8 +446,9 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 38px;
-  font-weight: 300;
+  font-size: 3.2em;
+  letter-spacing: 2px;
+  font-weight: 100;
 }
 h2,
 .h2 {
@@ -1823,7 +1820,7 @@ output {
   padding: 12px 18px;
 }
 .form-control:focus {
-  border-color: #eaeaea;
+  border-color: #505050;
   outline: 0;
 }
 .form-control::-moz-placeholder {
@@ -2279,7 +2276,7 @@ fieldset[disabled] .btn-success.active {
 .btn-info:active,
 .btn-info.active,
 .open .dropdown-toggle.btn-info {
-  color: #eaeaea;
+  color: #505050;
   border-color: #269abc;
 }
 .btn-info:active,
@@ -5237,13 +5234,35 @@ TOOLS
 STYLES
 *********************/
 body {
-  font-family: Helvetica, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
 }
 body header .logo {
   height: 60px;
 }
+body article.main-content {
+  background: -webkit-gradient(linear, left top, left bottom, #62b1d6), color-stop(100%, #36ff60);
+  background: -webkit-linear-gradient(top, #62b1d6 0%, #36ff60 100%);
+  padding: 40px;
+  color: #ffffff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+body article.main-content img {
+  width: 113%;
+  max-width: 300px;
+}
+body article.main-content img.left-hero {
+  margin-left: -10px;
+}
+body article.main-content img.right-hero {
+  margin-right: -10px;
+}
+body article.main-content img.middle-hero {
+  max-width: 150px;
+  margin-top: 20px;
+  margin-right: -30px;
+}
 body footer.footer {
-  background: #eaeaea;
+  background: #505050;
 }
 body section.supported img {
   max-width: 100%;

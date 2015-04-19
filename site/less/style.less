@@ -7,6 +7,7 @@ Stylesheet: Main Stylesheet
 /*********************
 COLORS
 *********************/
+
 @blue: #62b1d6;
 @green: #36ff60;
 @grey: #505050;
@@ -14,7 +15,6 @@ COLORS
 @black:             #000000;
 @white:             #fff;
 @off-white: #fafafa;
-@grey: #eaeaea;
 @light-grey: #e5e5e5;
 @lighter-grey: #f5f5f5;
 @dark-grey: #515e63;
@@ -81,10 +81,6 @@ strong {
 }
 dfn {
   font-style: italic;
-}
-h1 {
-  margin: .67em 0;
-  font-size: 2em;
 }
 mark {
   color: #000;
@@ -467,8 +463,9 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 38px;
-  font-weight: 300;
+  font-size: 3.2em;
+  letter-spacing: 2px;
+  font-weight: 100;
 }
 h2,
 .h2 {
@@ -5233,10 +5230,34 @@ TOOLS
 STYLES
 *********************/
 body {
-  font-family: Helvetica, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
   header {
     .logo {
       height: 60px;
+    }
+  }
+  article.main-content {
+    background: -webkit-gradient(linear, left top, left bottom, @blue), color-stop(100%,@green);
+    background: -webkit-linear-gradient(top, @blue 0%,@green 100%);
+    padding: 40px;
+    color: @white;
+    text-shadow: 1px 1px rgba(0,0,0,0.1);
+    img {
+      width: 113%;
+      max-width: 300px;
+      &.left-hero {
+        margin-left: -10px;
+      }
+      &.right-hero {
+        margin-right: -10px;
+      }
+      &.middle-hero {
+        max-width: 150px;
+        margin-top: 20px;
+        margin-right: -30px;
+      }
+    }
+    h1 {
     }
   }
   footer.footer {
