@@ -26,8 +26,10 @@ integration('itunes', {
             encodeURIComponent(track.title);
 
         http_get(search_url, function (res) {
-            var result = JSON.parse(res.responseText);
-            callback(result.results[0].trackViewUrl);
+            var result = JSON.parse(res.responseText),
+                track = result.results[0];
+
+            callback(track ? track.trackViewUrl : null);
         });
     }
 });
