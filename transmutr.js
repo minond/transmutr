@@ -101,7 +101,10 @@ function get_user_info() {
 }
 
 /**
- * @param {Object} user info object. right now just a `service` is required
+ * options:
+ * - service: {String} prefered service (eg. google)
+ * - open_in: {String} how to open new url (eg. current, new)
+ * @param {Object} user info object
  */
 function set_user_info(info) {
     localStorage.setItem('user', JSON.stringify(info));
@@ -133,6 +136,7 @@ function incoming_request(req) {
 
     if (!assert(requested_service, 'not able to find requested_service')) return;
     if (!assert(prefered_service, 'not able to find prefered_service')) return;
+    if (!assert(requested_service !== prefered_service, 'cannot link to same service')) return;
 
     console.info('info', info)
     console.info('user', user)
@@ -146,6 +150,21 @@ function incoming_request(req) {
         prefered_service.get_track_url(track, function (url) {
             if (!assert(url, 'unable to find track url')) return;
             console.info('url', url);
+
+            switch (user.open_in) {
+                case 'new':
+                    chrome.tabs.getSelected(null, function (tab) {
+                        chrome.tabs.create({
+                            url: url,
+                            index: tab.index + 1
+                        });
+                    });
+                    break;
+
+                case 'current':
+                    chrome.tabs.update({ url: url });
+                    break;
+            }
         });
     });
 }
@@ -200,5 +219,8 @@ callbacks([
     }, []);
 
     // XXX
-    set_user_info({ service: 'itunes' });
+    set_user_info({
+        service: 'spotify',
+        open_in: 'new'
+    });
 });
