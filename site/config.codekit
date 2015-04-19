@@ -11,6 +11,39 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/images\/hero-1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 32525,
+		"inputAbbreviatedPath": "\/images\/hero-1.png",
+		"outputAbbreviatedPath": "\/images\/hero-1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/hero-2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 14061,
+		"inputAbbreviatedPath": "\/images\/hero-2.png",
+		"outputAbbreviatedPath": "\/images\/hero-2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/hero-3.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 19686,
+		"inputAbbreviatedPath": "\/images\/hero-3.png",
+		"outputAbbreviatedPath": "\/images\/hero-3.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/logo.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -29,6 +62,17 @@
 		"initialSize": 48537,
 		"inputAbbreviatedPath": "\/images\/supported.jpg",
 		"outputAbbreviatedPath": "\/images\/supported.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/supported.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/images\/supported.png",
+		"outputAbbreviatedPath": "\/images\/supported.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
