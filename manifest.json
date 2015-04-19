@@ -25,6 +25,7 @@
   "permissions": [
     "tabs",
     "webRequest",
+    "management",
     "*://www.rdio.com/",
     "*://*.spotify.com/",
     "*://play.google.com/",

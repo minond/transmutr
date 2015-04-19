@@ -1,6 +1,11 @@
 'use strict';
 
 /**
+ * Enabled App
+ */
+ var enabled = true;
+
+/**
  * @param {String} label
  * @param {Object} api
  */
@@ -157,6 +162,9 @@ function assert(val, message) {
  * @param {Object} req
  */
 function incoming_request(req) {
+
+    if (!enabled) return;
+
     var info = parse(req.url),
         user = get_user_info();
 
@@ -251,4 +259,28 @@ callbacks([
         urls: integration.url_filters
     }, []);
 
+
+    chrome.browserAction.onClicked.addListener(function(tab) {
+
+        var id = chrome.runtime.id;
+        if (enabled) {
+            enabled = false;
+            chrome.browseraction.seticon(
+                path: {
+                    19: "/img/128.png",
+                    38: "img/extension-icon.png"
+                  },
+                  tabId: tab.id
+                });
+        } else {
+            enabled = true;
+            chrome.browseraction.seticon(
+                path: {
+                    19: "/img/128.png",
+                    38: "img/extension-icon.png"
+                  },
+                  tabId: tab.id
+                });
+        }
+    });
 });
