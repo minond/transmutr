@@ -251,6 +251,26 @@ function async_import_script(url, callback) {
     document.head.appendChild(script);
 }
 
+/**
+ * helper for updating the extension's icon
+ */
+function set_extension_icon() {
+    if (is_enabled()) {
+        // is_enabled(false)
+        chrome.browserAction.setIcon({
+            path: '/img/38-disabled.png'
+        });
+    } else {
+        // is_enabled(true);
+        chrome.browserAction.setIcon({
+            path: '/img/38.png'
+        });
+    }
+}
+
+// init
+set_extension_icon();
+
 callbacks([
     async_import_script.bind(null, 'integrations/rdio.js'),
     async_import_script.bind(null, 'integrations/spotify.js'),
@@ -259,22 +279,12 @@ callbacks([
     async_import_script.bind(null, 'integrations/itunes.js'),
     async_import_script.bind(null, 'integrations/beats.js'),
 ], function () {
-    // https://developer.chrome.com/extensions/background_pages
     chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
         urls: integration.url_filters
     }, []);
 
     chrome.browserAction.onClicked.addListener(function(tab) {
-        if (is_enabled()) {
-            is_enabled(false);
-            chrome.browserAction.setIcon({
-                path: '/img/38-disabled.png'
-            });
-        } else {
-            is_enabled(true);
-            chrome.browserAction.setIcon({
-                path: '/img/38.png'
-            });
-        }
+        is_enabled(!is_enabled());
+        set_extension_icon();
     });
 });
