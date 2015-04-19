@@ -14,6 +14,7 @@
     "*://www.rdio.com/",
     "*://*.spotify.com/",
     "*://play.google.com/",
-    "*://*.last.fm/"
+    "*://*.last.fm/",
+    "*://itunes.apple.com/"
   ]
 }
