@@ -224,5 +224,4 @@ callbacks([
         service: 'spotify',
         open_in: 'new'
     });
-    set_user_info({ service: 'beats' });
 });
