@@ -211,7 +211,11 @@ callbacks([
     async_import_script.bind(null, 'integrations/spotify.js'),
     async_import_script.bind(null, 'integrations/google.js'),
     async_import_script.bind(null, 'integrations/lastfm.js'),
+<<<<<<< HEAD
     async_import_script.bind(null, 'integrations/itunes.js'),
+=======
+    async_import_script.bind(null, 'integrations/beats.js'),
+>>>>>>> Implemented and added beats integration. Updated transmutr and manifest for it
 ], function () {
     // https://developer.chrome.com/extensions/background_pages
     chrome.webRequest.onBeforeRequest.addListener(incoming_request, {
@@ -219,8 +223,12 @@ callbacks([
     }, []);
 
     // XXX
+<<<<<<< HEAD
     set_user_info({
         service: 'spotify',
         open_in: 'new'
     });
+=======
+    set_user_info({ service: 'beats' });
+>>>>>>> Implemented and added beats integration. Updated transmutr and manifest for it
 });

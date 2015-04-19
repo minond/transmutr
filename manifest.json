@@ -17,5 +17,6 @@
     "*://play.google.com/",
     "*://*.last.fm/",
     "*://itunes.apple.com/"
+    "*://on.beatsmusic.com/"
   ]
 }
