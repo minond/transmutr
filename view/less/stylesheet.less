@@ -1,0 +1,177 @@
+@blue: #62b1d6;
+@green: #36ff60;
+@grey: #505050;
+
+.align-right {
+    text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 16px;
+  margin-bottom: 0;
+  border: 2px solid transparent;
+  font-weight: bold !important;
+  font-size: 12px;
+  color: @blue;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border-radius: 4px;
+  &#saveButton {
+    margin-top: 18px;
+  }
+  &.btn-default {
+    border: 2px solid @blue;
+    color: @blue;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;
+      &:hover {
+        border: 2px solid @green;
+        color: @green;
+      }
+      &:active {
+        border: 2px solid @grey;
+        color: @grey;
+      }
+  }
+}
+[hidden] {
+    display: none !important;
+}
+html.loading * {
+    -webkit-transition-delay: 0 !important;
+    -webkit-transition-duration: 0 !important;
+}
+.text-hide {
+    font-size: 0px;
+}
+body {
+    box-sizing: border-box;
+    min-height: 100%;
+    cursor: default;
+    margin: 0;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+    line-height: 28px;
+    background: #e5e5e5;
+    padding: 10px;
+}
+p {
+    line-height: 1.8em;
+}
+h1,
+h2,
+h3 {
+    -webkit-user-select: none;
+    margin: 0;
+    display: inline-block;
+    font-weight: normal;
+    /* Makes the vertical size of the text the same for all fonts. */
+    line-height: 1;
+}
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-size: 1.3em;
+    margin-bottom: 0.4em;
+}
+h3 {
+    color: black;
+    font-size: 1.2em;
+    margin-bottom: 0.8em;
+}
+a {
+    color: rgb(17, 85, 204);
+    text-decoration: underline;
+}
+a:active {
+    color: rgb(5, 37, 119);
+}
+/* Elements that need to be LTR even in an RTL context, but should align
+* right. (Namely, URLs, search engine names, etc.)
+*/
+
+html[dir='rtl'] .weakrtl {
+    direction: ltr;
+    text-align: right;
+}
+/* Input fields in search engine table need to be weak-rtl. Since those input
+* fields are generated for all cr.ListItem elements (and we only want weakrtl
+* on some), the class needs to be on the enclosing div.
+*/
+
+html[dir='rtl'] div.weakrtl input {
+    direction: ltr;
+    text-align: right;
+}
+html[dir='rtl'] .favicon-cell.weakrtl {
+    -webkit-padding-end: 22px;
+    -webkit-padding-start: 0;
+}
+/* weakrtl for selection drop downs needs to account for the fact that
+* Webkit does not honor the text-align attribute for the select element.
+* (See Webkit bug #40216)
+*/
+
+html[dir='rtl'] select.weakrtl {
+    direction: rtl;
+}
+html[dir='rtl'] select.weakrtl option {
+    direction: ltr;
+}
+/* WebKit does not honor alignment for text specified via placeholder attribute.
+* This CSS is a workaround. Please remove once WebKit bug is fixed.
+* https://bugs.webkit.org/show_bug.cgi?id=63367
+*/
+
+html[dir='rtl'] input.weakrtl::-webkit-input-placeholder,
+html[dir='rtl'] .weakrtl input::-webkit-input-placeholder {
+    direction: rtl;
+}
+.container {
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-box-orient: vertical;
+    -webkit-transition: 200ms -webkit-transform;
+    background: white;
+    box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.05);
+    color: #333;
+    max-width: 96%;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 24px 28px;
+    position: relative;
+    z-index: 2;
+}
+header {
+    text-align: center;
+    #logo {
+        height: 60px !important;
+        margin-bottom: -5px;
+    }
+}
+.form-group {
+    border-bottom: 2px solid #e5e5e5;
+    padding: 10px 0px;
+    &:last-of-type {
+        border-bottom: 0px;
+    }
+    select {
+        margin-left: 20px;
+    }
+}
+footer.footer {
+    text-align: center;
+    padding: 20px;
+}
