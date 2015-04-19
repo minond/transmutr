@@ -11,12 +11,12 @@
 
   "browser_action": {
       "default_title": "Transmutr",
-      "default_icon": "/img/48.png"
+      "default_icon": "/img/extension-icon.png"
   },
 
   "icons": {
       "16": "/img/16.png",
-      "48": "/img/48.png",
+      "48": "/img/extension-icon.png",
       "128": "/img/128.png"
   },
 
