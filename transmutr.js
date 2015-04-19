@@ -264,11 +264,11 @@ callbacks([
         if (enabled) {
             enabled = false;
             chrome.browserAction.setIcon(
-                {path: "/img/128-disabled.png"});
+                {path: "/img/38-disabled.png"});
         } else {
             enabled = true;
             chrome.browserAction.setIcon(
-                {path: "/img/extension-icon.png"});
+                {path: "/img/38.png"});
         }
     });
 });
