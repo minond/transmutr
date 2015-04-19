@@ -446,7 +446,7 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 3.2em;
+  font-size: 3.6em;
   letter-spacing: 2px;
   font-weight: 100;
 }
@@ -2115,6 +2115,36 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   border-radius: 5px;
 }
+.btn.btn-app-store {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.btn.btn-app-store:hover {
+  color: #62b1d6;
+  border: 2px solid #62b1d6;
+}
+.btn.btn-app-store:before {
+  content: "+";
+  font-size: 1.4em;
+  line-height: 0px;
+  margin-right: 10px;
+  margin-left: -5px;
+}
+.btn.btn-header {
+  border: 2px solid #62b1d6;
+  color: #62b1d6;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.btn.btn-header:hover {
+  border: 2px solid #36ff60;
+  color: #36ff60;
+}
+.btn.btn-header:active {
+  border: 2px solid #505050;
+  color: #505050;
+}
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus {
@@ -2421,7 +2451,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg,
 .btn-group-lg > .btn {
-  padding: 10px 16px;
+  padding: 10px 22px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
@@ -5236,6 +5266,18 @@ STYLES
 body {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
 }
+body header {
+  text-align: center;
+}
+@media (min-width: 600px) {
+  body header {
+    text-align: left;
+  }
+  body header .col-sm-8 {
+    text-align: right;
+    padding-top: 10px;
+  }
+}
 body header .logo {
   height: 60px;
 }
@@ -5244,25 +5286,71 @@ body article.main-content {
   background: -webkit-linear-gradient(top, #62b1d6 0%, #36ff60 100%);
   padding: 40px;
   color: #ffffff;
+  overflow-x: hidden;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) {
+  body article.main-content .main-link p {
+    margin-top: -10px;
+  }
+}
+@media (min-width: 980px) {
+  body article.main-content .main-link p {
+    margin-top: -50px;
+  }
+}
+body article.main-content .btn-app-store {
+  background: #ffffff;
+  color: #36ff60;
+  text-shadow: 0px 0px;
+}
+@media (min-width: 768px) {
+  body article.main-content h1 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
 }
 body article.main-content img {
   width: 113%;
   max-width: 300px;
 }
-body article.main-content img.left-hero {
-  margin-left: -10px;
+@media (min-width: 768px) {
+  body article.main-content img.left-hero {
+    margin-left: -10px;
+    max-width: 400px;
+  }
 }
-body article.main-content img.right-hero {
-  margin-right: -10px;
+@media (min-width: 768px) {
+  body article.main-content img.right-hero {
+    margin-left: -20px;
+    max-width: 420px;
+  }
 }
 body article.main-content img.middle-hero {
-  max-width: 150px;
-  margin-top: 20px;
-  margin-right: -30px;
+  display: none;
+  max-width: 270px;
+  margin-top: 10px;
+  margin-right: -9px;
+}
+@media (min-width: 768px) {
+  body article.main-content img.middle-hero {
+    display: inline-block;
+  }
 }
 body footer.footer {
+  text-align: center;
   background: #505050;
+}
+@media (min-width: 480px) {
+  body footer.footer {
+    text-align: left;
+  }
+  body footer.footer .copy {
+    text-align: right !important;
+  }
+}
+body section.supported {
+  padding: 20px 5px;
 }
 body section.supported img {
   max-width: 100%;
