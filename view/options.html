@@ -12,13 +12,13 @@
             <img src="res/logo.jpg" id="logo">
             <h1 class="text-hide">Transmutr</h1>
         </header>
-        <form>
+        <form id="saveform">
             <div class="form-group">
                 <label for="list">Your primary music streaming service:</label>
-                <select type="list">
+                <select type="list" id="primaryStream">
                   <option value="spotify">Spotify</option>
                   <option value="rdio">Rdio</option>
-                  <option value="google-play">Google Play</option>
+                  <option value="google">Google Play</option>
                   <option value="beats">Beats</option>
                   <option value="last-fm">Last.fm</option>
                   <option value="itunes">iTunes</option>
@@ -26,10 +26,10 @@
             </div>
             <div class="form-group">
                 <label for="list">Your secondary music streaming service:</label>
-                <select type="list">
+                <select type="list" id="secondaryStream">
                   <option value="spotify">Spotify</option>
                   <option value="rdio">Rdio</option>
-                  <option value="google-play">Google Play</option>
+                  <option value="google">Google Play</option>
                   <option value="beats">Beats</option>
                   <option value="last-fm">Last.fm</option>
                   <option value="itunes">iTunes</option>
@@ -39,13 +39,13 @@
                 <input type="checkbox" name="newtab" id="newtab">
                 <label for="newtab">Open converted link in a new tab</label>
             </div>
-            
-            <a class="btn btn-default" id="saveButton">Save</a>
+            <input type="submit" class="btn btn-default" value="Save">
         </form>
         <div id="status"></div>
     </section>
     <footer class="footer">
         <a class="btn btn-link">Learn more about Mindfarm</a>
     </footer>
-
+    <script src="/transmutr.js"></script>
+    <script src="/options.js"></script>
 </body></html>
