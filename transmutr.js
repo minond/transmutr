@@ -167,9 +167,7 @@ function assert(val, message) {
  * @param {Object} req
  */
 function incoming_request(req) {
-    if (!is_enabled()) {
-        return;
-    }
+    if (!is_enabled()) return;
 
     var info = parse(req.url),
         user = get_user_info();
