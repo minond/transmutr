@@ -50,7 +50,7 @@ integration('beats', {
 
             for (var i = 0; i < result.data.length; i++) {
 
-                if (result.data[i].detail == track.artist) {
+                if (result.data[i].detail == track.artist.replace("+", " ")) {
                     final_url += result.data[i].id;
                     break;
                 }
