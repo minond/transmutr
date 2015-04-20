@@ -1,10 +1,6 @@
 ![transmutr](http://minond.github.io/transmutr/images/logo.jpg)
 
-### Hear Music Your Way
+### Share music your way. Hear music your way.
 
-Having multiple friends on multiple music services can suck when you're excited
-to share or discover new bands from each other.  This simple Chrome extension
-will translate music track links into links for your preferred music service.
-
-Current integrations include Spotify, Google Play, Rdio, iTunes, LastFM, and
-Beats.
+A Chrome Extension to convert music links to your preferred music service.
+Currently integrated with Spotify, Google Play, Rdio, Beats, iTunes, and LastFM
