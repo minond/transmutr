@@ -23,8 +23,6 @@ integration('beats', {
 
          http_get(full_url, function (res) {
             var result = JSON.parse(res.responseText);
-            console.log(result.data);
-            console.log("get_track_info results ^");
 
             callback({
                 title: result.data.title,

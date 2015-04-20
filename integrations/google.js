@@ -14,9 +14,7 @@ integration('google', {
             return;
         }
 
-        console.log(url);
         http_get(track_url + parts[1], function (res) {
-            console.log('response from google:', res.responseText);
             var wrapper = document.createElement('div');
             wrapper.innerHTML = res.responseText;
 
@@ -36,14 +34,14 @@ integration('google', {
     },
 
     get_track_url: function (track, callback) {
-        var search_url = 'https://play.google.com/store/search?q=',
-            search_end = '&c=music',
-            track_url = 'https://play.google.com/music/m/';
+        var search_url = 'https://play.google.com/store/search?q=';
+            search_url += encodeURIComponent(track.artist + ' ');
+            search_url += encodeURIComponent(track.title);
+            search_url += '&c=music'; 
+            
+        var track_url = 'https://play.google.com/music/m/';
 
-        search_url += encodeURIComponent(track.artist + ' ');
-        search_url += encodeURIComponent(track.title);
-
-        http_get(search_url + search_end, function (res) {
+        http_get(search_url, function (res) {
             var wrapper = document.createElement('div');
             wrapper.innerHTML = res.responseText;
             var song_info = wrapper
