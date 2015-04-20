@@ -3,7 +3,7 @@
 
   "name": "Transmutr",
   "description": "Share music your way. Hear music your way.",
-  "version": "0.0.3",
+  "version": "0.0.4",
 
   "options_page": "view/options.html",
 
