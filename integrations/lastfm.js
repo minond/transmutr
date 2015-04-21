@@ -15,16 +15,22 @@ integration('lastfm', {
             return;
         }
 
-        // band_info array layout
-        // 0: ""
-        // 1: "music"
-        // 2: "ARTIST"
-        // 3: "_"
-        // 4: "SONG TITLE"
-        callback({
-            title: band_info[4],
-            artist: band_info[2],
-            album: null
+        http_get(url, function (res) {
+            var wrapper = document.createElement('div');
+            wrapper.innerHTML = res.responseText;
+            var album_name = wrapper.querySelector('a.media-link-reference').innerHTML; 
+
+            // band_info array layout
+            // 0: ""
+            // 1: "music"
+            // 2: "ARTIST"
+            // 3: "_"
+            // 4: "SONG TITLE"
+            callback({
+                title: band_info[4],
+                artist: band_info[2].replace("+", " "),
+                album: album_name
+            });
         });
     },
 
