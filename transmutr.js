@@ -176,6 +176,7 @@ function assert(val, message) {
  */
 function incoming_request(req) {
     if (!is_enabled()) return;
+    if (req.tabId === -1) return;
 
     var info = parse(req.url),
         user = get_user_info();

@@ -13,6 +13,7 @@ window.onload = function () {
         user_info.service = primaryselect.value;
         user_info.open_in = open_in.checked ? 'new' : 'current';
         set_user_info(user_info)
+        save_btn.innerHTML = 'Saved!';
         return false;
     });
 }
