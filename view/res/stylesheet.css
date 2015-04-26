@@ -40,6 +40,9 @@
   border: 2px solid #505050;
   color: #505050;
 }
+.btn.invisible {
+  display: none;
+}
 [hidden] {
   display: none !important;
 }
