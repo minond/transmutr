@@ -22,12 +22,13 @@ integration('beats', {
         full_url += "?client_id=" + this.api_key;
 
          http_get(full_url, function (res) {
-            var result = JSON.parse(res.responseText);
+            
+            var result = JSON.parse(res.responseText);            
 
             callback({
                 title: result.data.title,
                 artist: result.data.artist_display_name,
-                album: null
+                album: result.data.refs.album.display
             });
         });
     },
